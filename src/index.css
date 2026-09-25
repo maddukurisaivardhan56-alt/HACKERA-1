@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Tahoma', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Tahoma', serif;
+}
+
+@layer base {
+  :root {
+    --font-sans: 'Tahoma', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Centralized Theme CSS Variables (Controlled by Developer CMS) */
+    --color-primary: #388E3C;
+    --color-secondary: #1976D2;
+    --color-accent: #F57C00;
+    --color-accent-light: #C8E6C9;
+    --color-background: #FAFAFA;
+    --color-surface: #FFFFFF;
+    --color-text-dark: #333333;
+    --color-text-muted: #666666;
+    --color-border: #E0E0E0;
+
+    /* Backward compatibility aliases */
+    --color-text: var(--color-text-dark, #333333);
+    --color-muted: var(--color-text-muted, #666666);
+    --color-success: var(--color-primary, #388E3C);
+    --color-warning: var(--color-accent, #F57C00);
+    --color-error: #D32F2F;
+
+    /* Seamless bindings for existing agricultural design tokens */
+    --color-emerald-ink: var(--color-primary, #388E3C);
+    --color-emerald-ink-dark: #2E7D32;
+    --color-champagne: var(--color-background, #FAFAFA);
+    --color-champagne-card: var(--color-surface, #FFFFFF);
+    --color-champagne-soft: var(--color-accent-light, #C8E6C9);
+    --color-champagne-border: var(--color-border, #E0E0E0);
+  }
+
+  html, body {
+    font-family: 'Tahoma', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--color-text-dark, #333333);
+    background-color: var(--color-background, #FAFAFA);
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, input, select, textarea {
+    font-family: 'Tahoma', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Universal font rule for all hero elements, headings, buttons, and login portals */
+  *:not(code):not(pre):not(kbd):not(samp):not(.font-mono) {
+    font-family: 'Tahoma', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Touch & Mobile Optimization Utilities */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Emerald Ink & Champagne Palette Utilities (Dynamically Bound to Theme Variables) */
+.bg-emerald-ink {
+  background-color: var(--color-primary, #388E3C);
+}
+
+.hover\:bg-emerald-ink-dark:hover {
+  background-color: #2E7D32;
+}
+
+.text-emerald-ink {
+  color: var(--color-primary, #388E3C);
+}
+
+.border-emerald-ink {
+  border-color: var(--color-primary, #388E3C);
+}
+
+.bg-champagne {
+  background-color: var(--color-background, #FAFAFA);
+}
+
+.bg-champagne-card {
+  background-color: var(--color-surface, #FFFFFF);
+}
+
+.bg-champagne-soft {
+  background-color: var(--color-accent-light, #C8E6C9);
+}
+
+.text-champagne {
+  color: var(--color-primary, #388E3C);
+}
+
+.border-champagne {
+  border-color: var(--color-border, #E0E0E0);
+}
+
+/* Custom utility classes for agricultural dashboard */
+.agri-gradient-subtle {
+  background: linear-gradient(180deg, rgba(6, 78, 59, 0.05) 0%, rgba(248, 231, 201, 0.4) 100%);
+}
+
+.table-row-hover:hover {
+  background-color: #FAF4E8;
+}
+
+/* Custom scrollbar for clean dashboard tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3DEB8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0C79B;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #064E3B;
+}
+
+/* News Marquee / Ticker Continuous Smooth Scroll */
+@keyframes news-ticker-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-news-ticker {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: news-ticker-scroll 35s linear infinite;
+}
+
+.animate-news-ticker:hover,
+.news-ticker-container:hover .animate-news-ticker {
+  animation-play-state: paused;
+}
+
+.animate-welcome-ticker {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: news-ticker-scroll 42s linear infinite;
+}
+
+.animate-welcome-ticker:hover,
+.welcome-ticker-container:hover .animate-welcome-ticker {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-news-ticker,
+  .animate-welcome-ticker {
+    animation-duration: 90s;
+  }
+}
+
